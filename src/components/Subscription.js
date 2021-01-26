@@ -8,23 +8,28 @@ export function Subscription(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://sheetdb.io/api/v1/yj4ottmcbpj2r");
-      const data = await res.json();
-      const foundSub = data.find((sub) => sub.id === id);
-      setSub(foundSub);
+      const res = await fetch(
+        `https://sheetdb.io/api/v1/yj4ottmcbpj2r/search?id=${id}`
+      );
+      const [data] = await res.json();
+      setSub(data);
     };
     fetchData();
   }, [id]);
 
   return (
-    <>
-      <h1>Subscription</h1>
-      <Card>
-        <h2>Name: {sub.name}</h2>
-        <p>Price: {sub.price_per_month}</p>
-        <p>Billing period: {sub.billing_period}</p>
-        <Link onClick={(e) => props.history.goBack()}>Back</Link>
-      </Card>
-    </>
+    sub && (
+      <>
+        <h1>Subscription</h1>
+        <Card>
+          <h2>Name: {sub.name}</h2>
+          <p>Price: {sub.price_per_month}</p>
+          <p>Billing period: {sub.billing_period}</p>
+          <Link to="/" onClick={(e) => props.history.goBack}>
+            Back
+          </Link>
+        </Card>
+      </>
+    )
   );
 }
