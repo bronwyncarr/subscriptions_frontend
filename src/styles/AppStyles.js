@@ -30,3 +30,17 @@ export const SubWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Label = styled.label`
+  margin: 10px 0;
+`;
+
+export const Button = styled.button`
+  margin: 10px 0;
+  padding: 5px;
+`;

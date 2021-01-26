@@ -21,7 +21,7 @@ export function Subscriptions() {
           return (
             <Card key={index}>
               <h2>Name: {sub.name}</h2>
-              <p>Price: {sub.price_per_month}</p>
+              <p>Price: ${sub.price_per_month}</p>
               <p>Billing period: {sub.billing_period}</p>
               <Link to={`/subscriptions/${sub.id}`}>Details</Link>
             </Card>
